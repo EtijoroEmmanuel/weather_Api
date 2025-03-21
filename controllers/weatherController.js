@@ -24,22 +24,27 @@ exports.readWeather = async(req, res)=>{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${SECRET_KEY}`);
         
         // create an instance
-        const { name, main, weather, wind } = response.data
+        const { name, main, weather, wind, humidity, sys } = response.data
+        console.log(response)
         
         const weatherData = {
-                cityName: name,
+                city: ` ${name}, ${sys.country}`,
                 temperature: main.temp,
-                weatherConditin: weather[0].description,
-                windSpeed: wind.speed
+                condition: weather[0].description,
+                wind_speed: wind.speed,
+                humidity: main.humidity
+                
         }
     
     res.status(200).json({
         message: `This is weatherData of: ${cityName}`,
         data: {
-            cityName: cityName,
+            cityName:` ${name}, ${sys.country}`,
                 temperature: main.temp,
                 weatherConditin: weather[0].description,
-                windSpeed: wind.speed
+                windSpeed: wind.speed,
+                humidity: main.humidity
+                
         }
     })
 
