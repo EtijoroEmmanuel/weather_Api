@@ -14,7 +14,7 @@ exports.readWeather = async(req, res)=>{
         };
 
         // check if API key is Entered
-        if (!SECRET_KEY && SECRET_KEY == null) {
+        if (!SECRET_KEY){
             return res.status(500).json({ 
                 message: 'Invalid 0r missing API key' 
             })
