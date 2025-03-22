@@ -10,7 +10,7 @@ exports.readWeather = async(req, res)=>{
         if(cityName === null){
             res.status(404).json({
                 message: "Invalid city"
-            })
+            })  
         };
 
         // check if API key is Entered
@@ -33,7 +33,7 @@ exports.readWeather = async(req, res)=>{
                 condition: weather[0].description,
                 wind_speed: wind.speed,
                 humidity: main.humidity
-                
+                 
         }
     
     res.status(200).json({
@@ -43,8 +43,7 @@ exports.readWeather = async(req, res)=>{
                 temperature: main.temp,
                 weatherConditin: weather[0].description,
                 windSpeed: wind.speed,
-                humidity: main.humidity
-                
+                humidity: main.humidity    
         }
     })
 
